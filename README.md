@@ -32,12 +32,38 @@ applications!
 
 ![Juice Shop Screenshot Slideshow](screenshots/slideshow.gif)
 
+## Application Preview
+
+Juice Shop presents its intentionally vulnerable training surface as a polished ecommerce storefront. The current UI uses
+responsive product cards, a focused product detail dialog, and a cart flow that keeps quantity controls, totals, and
+checkout action close together.
+
+<p align="center">
+  <img alt="Modern Juice Shop product storefront" src="screenshots/modern-storefront.png" width="760">
+</p>
+
+<p align="center">
+  <img alt="Modern Juice Shop product detail dialog" src="screenshots/modern-product-detail.png" width="370">
+  <img alt="Modern Juice Shop basket and checkout panel" src="screenshots/modern-basket.png" width="370">
+</p>
+
+Highlights of the refreshed shopping experience:
+
+* Responsive product grid with clear product imagery, price hierarchy, availability ribbons, and full-width add-to-basket
+  actions.
+* Sticky, compact navigation with prominent search, account, language, and basket controls.
+* Product detail dialog that keeps imagery, description, price, bonus points, reviews, and review actions in one focused
+  surface.
+* Modern basket panel with scannable line items, touch-friendly quantity controls, a visible total, and a primary
+  checkout action.
+
 For a detailed introduction, full list of features and architecture overview please visit the official project page:
 <https://owasp-juice.shop>
 
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
+- [Application Preview](#application-preview)
 - [Setup](#setup)
   - [From Sources](#from-sources)
   - [Packaged Distributions](#packaged-distributions)
