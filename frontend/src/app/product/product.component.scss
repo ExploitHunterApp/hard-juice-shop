@@ -6,12 +6,23 @@
 @use './../../styles/variables' as *;
 
 .mat-card {
-  border: 0;
-  border-radius: 0;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
   height: 100%;
+  overflow: hidden;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.mat-card:hover,
+.mat-card:focus-within {
+  border-color: var(--theme-primary-fade-40);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.16);
+  transform: translateY(-3px);
 }
 
 .product {
+  background: var(--mat-sys-surface-container);
   touch-action: pan-y;
   overflow: hidden;
   position: relative;
@@ -22,21 +33,29 @@
 }
 
 .info-box {
-  text-align: center;
+  display: flex;
+  min-height: 4.5rem;
+  text-align: left;
 }
 
 .name {
-  margin-top: $space-s;
-  font-size: medium;
   cursor: pointer;
-  padding: 0 $space-m;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: $space-s;
+  padding: 0 $space-m $space-s;
+  width: 100%;
 }
 
 .price {
-  font-size: large;
-  margin-bottom: $space-s;
+  align-items: baseline;
   display: flex;
+  font-size: 1.35rem;
+  font-weight: 700;
   gap: $space-xs;
+  line-height: 1;
+  margin-bottom: $space-s;
 }
 
 .expired {
@@ -46,17 +65,20 @@
 }
 
 .image-container {
-  aspect-ratio: 0.897;
+  aspect-ratio: 1 / 1;
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--theme-background-light);
   background-position: center;
   background-size: cover;
-  border: var(--theme-thumbnail-border);
+  border: 0;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
   box-sizing: border-box;
+  transition: transform 220ms ease;
 
   @media (max-width: 580px) {
     aspect-ratio: 16 / 9;
@@ -70,21 +92,34 @@
   background-image: inherit;
   background-position: inherit;
   background-size: inherit;
-  filter: blur(8px);
-  transform: scale(1.08);
+  filter: blur(10px) saturate(1.05);
+  opacity: 0.34;
+  transform: scale(1.12);
 }
 
 .img-thumbnail {
-  width: 100%;
-  height: 100%;
+  height: calc(100% - 2rem);
+  margin: $space-m;
+  width: calc(100% - 2rem);
   max-height: 340px;
   object-fit: contain;
   position: relative;
   z-index: 1;
   cursor: pointer;
+  transition: transform 220ms ease;
+}
+
+.product:hover .img-thumbnail,
+.product:focus-within .img-thumbnail {
+  transform: scale(1.03);
 }
 
 .footer {
+  align-items: stretch;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
   padding: $space-m;
 }
 
@@ -114,6 +149,8 @@
 }
 
 .btn-basket {
+  border-radius: 8px;
+  min-height: 2.75rem;
   position: relative;
   overflow: hidden;
   width: 100%;
