@@ -4,7 +4,6 @@ on:
     tags:
       - v*
 env:
-  CYCLONEDX_NPM_VERSION: '^5.0.0'   # keep in sync with package.json
   TYPESCRIPT_VERSION: '~5.3.3'                      # keep in sync with package.json
 jobs:
   package:
@@ -27,7 +26,6 @@ jobs:
           echo "PNPM_HOME=$HOME/.local/share/pnpm" >> $GITHUB_ENV
           echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
           pnpm add -g typescript@${{ env.TYPESCRIPT_VERSION }}
-          pnpm add -g @cyclonedx/cyclonedx-npm@${{ env.CYCLONEDX_NPM_VERSION }}
           pnpm add -g grunt-cli
       - name: "Set packaging options for Grunt"
         run: |
@@ -85,7 +83,6 @@ jobs:
           build-args: |
             VCS_REF=${{ env.VCS_REF }}
             BUILD_DATE=${{ env.BUILD_DATE }}
-            CYCLONEDX_NPM_VERSION=${{ env.CYCLONEDX_NPM_VERSION }}
   notify-slack:
     if: always()
     needs:

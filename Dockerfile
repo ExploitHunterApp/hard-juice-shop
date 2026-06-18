@@ -22,10 +22,7 @@ RUN chmod -R g=u ftp/ frontend/dist/ logs/ data/ i18n/
 RUN rm ftp/legal.md || true
 RUN rm i18n/*.json || true
 
-# keep version in sync with package.json
-ARG CYCLONEDX_NPM_VERSION='^5.0.0'
-RUN pnpm add -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
-RUN pnpm run sbom || true
+RUN pnpm run sbom
 
 FROM gcr.io/distroless/nodejs24-debian13
 ARG BUILD_DATE

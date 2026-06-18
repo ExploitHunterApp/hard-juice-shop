@@ -213,9 +213,6 @@ importers:
         specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
-      '@cyclonedx/cyclonedx-npm':
-        specifier: ^5.0.0
-        version: 5.0.0
       '@eslint/js':
         specifier: ^9.33.0
         version: 9.39.4
@@ -467,7 +464,7 @@ importers:
         version: 6.43.1
       '@cyclonedx/cyclonedx-esbuild':
         specifier: ^1.0.0
-        version: 1.3.1(esbuild@0.28.1)(libxmljs2@0.37.0)(xmlbuilder2@4.0.3)
+        version: 1.3.1(esbuild@0.28.1)(libxmljs2@0.37.0)
       '@fortawesome/fontawesome-svg-core':
         specifier: ~1.2.30
         version: 1.2.36
@@ -1166,11 +1163,6 @@ packages:
         optional: true
       xmlbuilder2:
         optional: true
-
-  '@cyclonedx/cyclonedx-npm@5.0.0':
-    resolution: {integrity: sha512-pEz/pqYJHQ0ZvY5xFJa+GQ5AjNL7JOEJCXCHymvKo2N1VnzKE1ROpkumduJt8a0DukQjQfBGRXouGQ9xqJtJaQ==}
-    engines: {node: '>=20.18.0', npm: '>=9'}
-    hasBin: true
 
   '@cypress/request@3.0.10':
     resolution: {integrity: sha512-hauBrOdvu08vOsagkZ/Aju5XuiZx6ldsLfByg1htFeldhex+PeMrYauANzFsMJeAA0+dyPLbDoX2OYuvVoLDkQ==}
@@ -2206,22 +2198,6 @@ packages:
   '@npmcli/run-script@10.0.4':
     resolution: {integrity: sha512-mGUWr1uMnf0le2TwfOZY4SFxZGXGfm4Jtay/nwAa2FLNAKXUoUwaGwBMNH36UHPtinWfTSJ3nqFQr0091CxVGg==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  '@oozcitak/dom@2.0.2':
-    resolution: {integrity: sha512-GjpKhkSYC3Mj4+lfwEyI1dqnsKTgwGy48ytZEhm4A/xnH/8z9M3ZVXKr/YGQi3uCLs1AEBS+x5T2JPiueEDW8w==}
-    engines: {node: '>=20.0'}
-
-  '@oozcitak/infra@2.0.2':
-    resolution: {integrity: sha512-2g+E7hoE2dgCz/APPOEK5s3rMhJvNxSMBrP+U+j1OWsIbtSpWxxlUjq1lU8RIsFJNYv7NMlnVsCuHcUzJW+8vA==}
-    engines: {node: '>=20.0'}
-
-  '@oozcitak/url@3.0.0':
-    resolution: {integrity: sha512-ZKfET8Ak1wsLAiLWNfFkZc/BraDccuTJKR6svTYc7sVjbR+Iu0vtXdiDMY4o6jaFl5TW2TlS7jbLl4VovtAJWQ==}
-    engines: {node: '>=20.0'}
-
-  '@oozcitak/util@10.0.0':
-    resolution: {integrity: sha512-hAX0pT/73190NLqBPPWSdBVGtbY6VOhWYK3qqHqtXQ1gK7kS2yz4+ivsN07hpJ6I3aeMtKP6J6npsEKOAzuTLA==}
-    engines: {node: '>=20.0'}
 
   '@opentelemetry/api@1.9.1':
     resolution: {integrity: sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==}
@@ -8528,10 +8504,6 @@ packages:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
     engines: {node: '>=18'}
 
-  xmlbuilder2@4.0.3:
-    resolution: {integrity: sha512-bx8Q1STctnNaaDymWnkfQLKofs0mGNN7rLLapJlGuV3VlvegD7Ls4ggMjE3aUSWItCCzU0PEv45lI87iSigiCA==}
-    engines: {node: '>=20.0'}
-
   xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
 
@@ -9352,9 +9324,9 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.4
 
-  '@cyclonedx/cyclonedx-esbuild@1.3.1(esbuild@0.28.1)(libxmljs2@0.37.0)(xmlbuilder2@4.0.3)':
+  '@cyclonedx/cyclonedx-esbuild@1.3.1(esbuild@0.28.1)(libxmljs2@0.37.0)':
     dependencies:
-      '@cyclonedx/cyclonedx-library': 10.1.0(ajv-formats-draft2019@1.6.1(ajv@8.20.0))(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(libxmljs2@0.37.0)(packageurl-js@2.0.1)(spdx-expression-parse@4.0.0)(xmlbuilder2@4.0.3)
+      '@cyclonedx/cyclonedx-library': 10.1.0(ajv-formats-draft2019@1.6.1(ajv@8.20.0))(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(libxmljs2@0.37.0)(packageurl-js@2.0.1)(spdx-expression-parse@4.0.0)
       commander: 14.0.3
       normalize-package-data: 8.0.0
       packageurl-js: 2.0.1
@@ -9368,7 +9340,7 @@ snapshots:
       - libxmljs2
       - xmlbuilder2
 
-  '@cyclonedx/cyclonedx-library@10.1.0(ajv-formats-draft2019@1.6.1(ajv@8.20.0))(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(libxmljs2@0.37.0)(packageurl-js@2.0.1)(spdx-expression-parse@4.0.0)(xmlbuilder2@4.0.3)':
+  '@cyclonedx/cyclonedx-library@10.1.0(ajv-formats-draft2019@1.6.1(ajv@8.20.0))(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(libxmljs2@0.37.0)(packageurl-js@2.0.1)(spdx-expression-parse@4.0.0)':
     optionalDependencies:
       ajv: 8.20.0
       ajv-formats: 3.0.1(ajv@8.20.0)
@@ -9376,23 +9348,6 @@ snapshots:
       libxmljs2: 0.37.0
       packageurl-js: 2.0.1
       spdx-expression-parse: 4.0.0
-      xmlbuilder2: 4.0.3
-
-  '@cyclonedx/cyclonedx-npm@5.0.0':
-    dependencies:
-      '@cyclonedx/cyclonedx-library': 10.1.0(ajv-formats-draft2019@1.6.1(ajv@8.20.0))(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(libxmljs2@0.37.0)(packageurl-js@2.0.1)(spdx-expression-parse@4.0.0)(xmlbuilder2@4.0.3)
-      commander: 14.0.3
-      normalize-package-data: 8.0.0
-      packageurl-js: 2.0.1
-      spdx-expression-parse: 4.0.0
-      xmlbuilder2: 4.0.3
-    optionalDependencies:
-      ajv: 8.20.0
-      ajv-formats: 3.0.1(ajv@8.20.0)
-      ajv-formats-draft2019: 1.6.1(ajv@8.20.0)
-      libxmljs2: 0.37.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@cypress/request@3.0.10':
     dependencies:
@@ -10434,23 +10389,6 @@ snapshots:
       '@npmcli/promise-spawn': 9.0.1
       node-gyp: 12.4.0
       proc-log: 6.1.0
-
-  '@oozcitak/dom@2.0.2':
-    dependencies:
-      '@oozcitak/infra': 2.0.2
-      '@oozcitak/url': 3.0.0
-      '@oozcitak/util': 10.0.0
-
-  '@oozcitak/infra@2.0.2':
-    dependencies:
-      '@oozcitak/util': 10.0.0
-
-  '@oozcitak/url@3.0.0':
-    dependencies:
-      '@oozcitak/infra': 2.0.2
-      '@oozcitak/util': 10.0.0
-
-  '@oozcitak/util@10.0.0': {}
 
   '@opentelemetry/api@1.9.1': {}
 
@@ -17907,13 +17845,6 @@ snapshots:
   ws@8.18.0: {}
 
   xml-name-validator@5.0.0: {}
-
-  xmlbuilder2@4.0.3:
-    dependencies:
-      '@oozcitak/dom': 2.0.2
-      '@oozcitak/infra': 2.0.2
-      '@oozcitak/util': 10.0.0
-      js-yaml: 4.2.0
 
   xmlchars@2.2.0: {}
 

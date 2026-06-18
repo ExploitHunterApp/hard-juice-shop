@@ -10,6 +10,7 @@ import type { Express } from 'express'
 import { createTestApp } from './helpers/setup'
 import * as security from '../../lib/insecurity'
 import { ChallengeDependencyModelInit } from '../../models/challengeDependency'
+import { ChallengeModel } from '../../models/challenge'
 
 let app: Express
 const authHeader = { Authorization: 'Bearer ' + security.authorize(), 'content-type': 'application/json' }
@@ -49,6 +50,32 @@ void describe('/api/Challenges', () => {
         solved: false
       })
     assert.equal(res.status, 401)
+  })
+
+  void it('GET challenge progress returns deterministic solve counts and keys', async () => {
+    await ChallengeModel.update({ solved: false, codingChallengeStatus: 0 }, { where: {} })
+    await ChallengeModel.update({ solved: true }, { where: { key: 'scoreBoardChallenge' } })
+    await ChallengeModel.update({ solved: true, codingChallengeStatus: 1 }, { where: { key: 'adminSectionChallenge' } })
+    await ChallengeModel.update({ codingChallengeStatus: 2 }, { where: { key: 'loginAdminChallenge' } })
+
+    const codingChallengeCount = await ChallengeModel.count({ where: { hasCodingChallenge: true } })
+    const challengeCount = await ChallengeModel.count()
+    const res = await request(app)
+      .get('/api/Challenges/progress')
+
+    assert.equal(res.status, 200)
+    assert.ok(res.headers['content-type']?.includes('application/json'))
+    assert.equal(res.body.status, 'ok')
+    assert.equal(res.body.challenges.total, challengeCount)
+    assert.equal(res.body.challenges.solved, 2)
+    assert.deepEqual(res.body.challenges.solvedKeys, ['adminSectionChallenge', 'scoreBoardChallenge'])
+    assert.equal(res.body.codingChallenges.total, codingChallengeCount * 2)
+    assert.equal(res.body.codingChallenges.solved, 3)
+    assert.deepEqual(res.body.codingChallenges.findIt.solvedKeys, ['adminSectionChallenge', 'loginAdminChallenge'])
+    assert.deepEqual(res.body.codingChallenges.fixIt.solvedKeys, ['loginAdminChallenge'])
+    assert.equal(res.body.total, challengeCount + codingChallengeCount * 2)
+    assert.equal(res.body.solved, 5)
+    assert.equal(res.body.unsolved, res.body.total - 5)
   })
 })
 

@@ -20,7 +20,6 @@ on:
 env:
   NODE_DEFAULT_VERSION: 24
   NODE_OPTIONS: "--max_old_space_size=4096"
-  CYCLONEDX_NPM_VERSION: '^5.0.0'   # keep in sync with package.json
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -295,7 +294,6 @@ jobs:
           echo "PNPM_HOME=$HOME/.local/share/pnpm" >> $GITHUB_ENV
           echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
           pnpm add -g typescript@${{ env.TYPESCRIPT_VERSION }}
-          pnpm add -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
           pnpm add -g grunt-cli
       - name: "Set packaging options for Grunt"
         run: |
@@ -361,7 +359,6 @@ jobs:
           build-args: |
             VCS_REF=${{ env.VCS_REF }}
             BUILD_DATE=${{ env.BUILD_DATE }}
-            CYCLONEDX_NPM_VERSION=${{ env.CYCLONEDX_NPM_VERSION }}
   heroku:
     if: github.repository == 'juice-shop/juice-shop' && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
     needs: [frontend-test, server-test, api-test, e2e-test, custom-config-test]
