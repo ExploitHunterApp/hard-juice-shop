@@ -36,7 +36,7 @@ describe('KeysService', () => {
     service.nftUnlocked().subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/nftUnlocked')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/nftUnlocked')
     expect(req.request.method).toBe('GET')
     req.flush('apiResponse')
   })
@@ -45,7 +45,7 @@ describe('KeysService', () => {
     service.nftMintListen().subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/nftMintListen')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/nftMintListen')
     expect(req.request.method).toBe('GET')
     req.flush('apiResponse')
   })
@@ -54,7 +54,7 @@ describe('KeysService', () => {
     service.checkNftMinted().subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/api/Challenges/?key=nftMintChallenge')
+    const req = httpMock.expectOne('http://localhost:3322/api/Challenges/?key=nftMintChallenge')
     expect(req.request.method).toBe('GET')
     req.flush('apiResponse')
   })
@@ -63,7 +63,7 @@ describe('KeysService', () => {
     service.submitKey('privateKey').subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/submitKey')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/submitKey')
     expect(req.request.method).toBe('POST')
     expect(req.request.body).toEqual({ privateKey: 'privateKey' })
     req.flush('apiResponse')
@@ -73,7 +73,7 @@ describe('KeysService', () => {
     service.verifyNFTWallet('walletAddress').subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/walletNFTVerify')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/walletNFTVerify')
     expect(req.request.method).toBe('POST')
     expect(req.request.body).toEqual({ walletAddress: 'walletAddress' })
     req.flush('apiResponse')
@@ -83,7 +83,7 @@ describe('KeysService', () => {
     service.walletAddressSend('walletAddress').subscribe((res) => {
       expect(res).toBe('apiResponse')
     })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/walletExploitAddress')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/walletExploitAddress')
     expect(req.request.method).toBe('POST')
     expect(req.request.body).toEqual({ walletAddress: 'walletAddress' })
     req.flush('apiResponse')
@@ -92,7 +92,7 @@ describe('KeysService', () => {
   it('should handle error in nftUnlocked', () => {
     let capturedError: any
     service.nftUnlocked().subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/nftUnlocked')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/nftUnlocked')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })
@@ -100,7 +100,7 @@ describe('KeysService', () => {
   it('should handle error in nftMintListen', () => {
     let capturedError: any
     service.nftMintListen().subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/nftMintListen')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/nftMintListen')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })
@@ -108,7 +108,7 @@ describe('KeysService', () => {
   it('should handle error in checkNftMinted', () => {
     let capturedError: any
     service.checkNftMinted().subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/api/Challenges/?key=nftMintChallenge')
+    const req = httpMock.expectOne('http://localhost:3322/api/Challenges/?key=nftMintChallenge')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })
@@ -116,7 +116,7 @@ describe('KeysService', () => {
   it('should handle error in submitKey', () => {
     let capturedError: any
     service.submitKey('privateKey').subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/submitKey')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/submitKey')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })
@@ -124,7 +124,7 @@ describe('KeysService', () => {
   it('should handle error in verifyNFTWallet', () => {
     let capturedError: any
     service.verifyNFTWallet('walletAddress').subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/walletNFTVerify')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/walletNFTVerify')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })
@@ -132,7 +132,7 @@ describe('KeysService', () => {
   it('should handle error in walletAddressSend', () => {
     let capturedError: any
     service.walletAddressSend('walletAddress').subscribe({ next: () => expect(true).toBe(false), error: (e) => { capturedError = e } })
-    const req = httpMock.expectOne('http://localhost:3000/rest/web3/walletExploitAddress')
+    const req = httpMock.expectOne('http://localhost:3322/rest/web3/walletExploitAddress')
     req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
     expect(capturedError.status).toBe(500)
   })

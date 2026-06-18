@@ -30,7 +30,7 @@ describe('ChallengeService', () => {
         let res: any
         service.find().subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/api/Challenges/')
+        const req = httpMock.expectOne('http://localhost:3322/api/Challenges/')
         req.flush({ data: 'apiResponse' })
 
         expect(req.request.method).toBe('GET')
@@ -45,7 +45,7 @@ describe('ChallengeService', () => {
         let res: any
         service.continueCode().subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code')
         req.flush({ continueCode: 'apiResponse' })
 
         expect(req.request.method).toBe('GET')
@@ -60,7 +60,7 @@ describe('ChallengeService', () => {
         let res: any
         service.restoreProgress('CODE').subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code/apply/CODE')
         req.flush({ data: 'apiResponse' })
 
         expect(req.request.method).toBe('PUT')
@@ -75,7 +75,7 @@ describe('ChallengeService', () => {
         let res: any
         service.continueCodeFindIt().subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-findIt')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-findIt')
         req.flush({ continueCode: 'apiResponse' })
 
         expect(req.request.method).toBe('GET')
@@ -90,7 +90,7 @@ describe('ChallengeService', () => {
         let res: any
         service.restoreProgressFindIt('CODE').subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-findIt/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-findIt/apply/CODE')
         req.flush({ data: 'apiResponse' })
 
         expect(req.request.method).toBe('PUT')
@@ -105,7 +105,7 @@ describe('ChallengeService', () => {
         let res: any
         service.continueCodeFixIt().subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-fixIt')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-fixIt')
         req.flush({ continueCode: 'apiResponse' })
 
         expect(req.request.method).toBe('GET')
@@ -120,7 +120,7 @@ describe('ChallengeService', () => {
         let res: any
         service.restoreProgressFixIt('CODE').subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-fixIt/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-fixIt/apply/CODE')
         req.flush({ data: 'apiResponse' })
 
         expect(req.request.method).toBe('PUT')
@@ -135,7 +135,7 @@ describe('ChallengeService', () => {
         let res: any
         service.repeatNotification('CHALLENGE').subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne(req => req.url === 'http://localhost:3000/rest/repeat-notification')
+        const req = httpMock.expectOne(req => req.url === 'http://localhost:3322/rest/repeat-notification')
         req.flush('apiResponse')
 
         expect(req.request.method).toBe('GET')
@@ -150,7 +150,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.find().subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/api/Challenges/')
+        const req = httpMock.expectOne('http://localhost:3322/api/Challenges/')
         req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
         expect(req.request.method).toBe('GET')
         expect(capturedError.status).toBe(500)
@@ -163,7 +163,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.continueCode().subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code')
         req.error(new ErrorEvent('Request failed'), { status: 503, statusText: 'Service Unavailable' })
         expect(req.request.method).toBe('GET')
         expect(capturedError.status).toBe(503)
@@ -176,7 +176,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.continueCodeFindIt().subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-findIt')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-findIt')
         req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
         expect(req.request.method).toBe('GET')
         expect(capturedError.status).toBe(500)
@@ -189,7 +189,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.continueCodeFixIt().subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-fixIt')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-fixIt')
         req.error(new ErrorEvent('Request failed'), { status: 500, statusText: 'Internal Server Error' })
         expect(req.request.method).toBe('GET')
         expect(capturedError.status).toBe(500)
@@ -202,7 +202,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.restoreProgress('CODE').subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code/apply/CODE')
         req.error(new ErrorEvent('Bad Request'), { status: 400, statusText: 'Bad Request' })
         expect(req.request.method).toBe('PUT')
         expect(capturedError.status).toBe(400)
@@ -215,7 +215,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.restoreProgressFindIt('CODE').subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-findIt/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-findIt/apply/CODE')
         req.error(new ErrorEvent('Bad Request'), { status: 400, statusText: 'Bad Request' })
         expect(req.request.method).toBe('PUT')
         expect(capturedError.status).toBe(400)
@@ -228,7 +228,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.restoreProgressFixIt('CODE').subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/rest/continue-code-fixIt/apply/CODE')
+        const req = httpMock.expectOne('http://localhost:3322/rest/continue-code-fixIt/apply/CODE')
         req.error(new ErrorEvent('Bad Request'), { status: 400, statusText: 'Bad Request' })
         expect(req.request.method).toBe('PUT')
         expect(capturedError.status).toBe(400)
@@ -241,7 +241,7 @@ describe('ChallengeService', () => {
 
         let capturedError: any
         service.repeatNotification('X').subscribe({ next: () => { throw new Error('expected error') }, error: e => { capturedError = e } })
-        const req = httpMock.expectOne(r => r.url === 'http://localhost:3000/rest/repeat-notification')
+        const req = httpMock.expectOne(r => r.url === 'http://localhost:3322/rest/repeat-notification')
         req.error(new ErrorEvent('Service Unavailable'), { status: 503, statusText: 'Service Unavailable' })
         expect(req.request.method).toBe('GET')
         expect(capturedError.status).toBe(503)

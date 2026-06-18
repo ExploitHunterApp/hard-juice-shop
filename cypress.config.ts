@@ -12,7 +12,7 @@ export default defineConfig({
     runMode: 2
   },
   e2e: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:3322',
     specPattern: 'test/cypress/e2e/**.spec.ts',
     downloadsFolder: 'test/cypress/downloads',
     fixturesFolder: false,

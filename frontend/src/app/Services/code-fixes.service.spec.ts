@@ -24,7 +24,7 @@ describe('CodeFixesService', () => {
 
         let res: any
         service.get('testKey').subscribe((data) => (res = data))
-        const req = httpMock.expectOne('http://localhost:3000/snippets/fixes/testKey')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/fixes/testKey')
         req.flush('apiResponse')
         expect(req.request.method).toBe('GET')
         expect(res).toBe('apiResponse')
@@ -37,7 +37,7 @@ describe('CodeFixesService', () => {
 
         let capturedError: any
         service.get('testKey').subscribe({ next: () => { }, error: (e) => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/snippets/fixes/testKey')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/fixes/testKey')
         req.flush(null, { status: 500, statusText: 'Server Error' })
         expect(capturedError).toBeTruthy()
         expect(capturedError.status).toBe(500)
@@ -50,7 +50,7 @@ describe('CodeFixesService', () => {
 
         let res: any
         service.check('testChallenge', 1).subscribe((data) => (res = data))
-        const req = httpMock.expectOne('http://localhost:3000/snippets/fixes')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/fixes')
         req.flush('apiResponse')
         expect(req.request.method).toBe('POST')
         expect(req.request.body).toEqual({ key: 'testChallenge', selectedFix: 1 })

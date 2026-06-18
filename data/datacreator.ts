@@ -793,7 +793,7 @@ async function createOrders () {
 
 async function prepareFilesystem () {
   replace({
-    regex: 'http://localhost:3000',
+    regex: 'http://localhost:3322',
     replacement: config.get<string>('server.baseUrl'),
     paths: ['.well-known/csaf/provider-metadata.json'],
     recursive: true,

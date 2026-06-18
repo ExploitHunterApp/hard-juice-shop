@@ -257,7 +257,7 @@ jobs:
           install: false
           browser: ${{ matrix.browser }}
           start: npm start
-          wait-on: http://localhost:3000
+          wait-on: http://localhost:3322
           record: true
           group: ${{ matrix.browser }} @ ${{ matrix.os }}
         env:
@@ -272,7 +272,7 @@ jobs:
           install: false
           browser: ${{ matrix.browser }}
           start: npm start
-          wait-on: http://localhost:3000
+          wait-on: http://localhost:3322
           record: true
           group: ${{ matrix.browser }} @ ${{ matrix.os }}
         env:
@@ -315,7 +315,7 @@ jobs:
           npm start &
           cd ../..
           chmod +x test/smoke/smoke-test.sh
-          test/smoke/smoke-test.sh http://localhost:3000
+          test/smoke/smoke-test.sh http://localhost:3322
   docker-test:
     runs-on: ubuntu-latest
     steps:

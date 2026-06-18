@@ -23,7 +23,7 @@ describe('VulnLinesService', () => {
 
         let res: any
         service.check('testChallenge', [1, 2]).subscribe((data) => (res = data))
-        const req = httpMock.expectOne('http://localhost:3000/snippets/verdict')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/verdict')
         req.flush('apiResponse')
         expect(req.request.method).toBe('POST')
         expect(req.request.body).toEqual({ key: 'testChallenge', selectedLines: [1, 2] })
@@ -37,7 +37,7 @@ describe('VulnLinesService', () => {
 
         let capturedError: any
         service.check('key', [3, 4]).subscribe({ next: () => { throw new Error('expected error') }, error: (e) => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/snippets/verdict')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/verdict')
         req.error(new ErrorEvent('Request failed'), { status: 400, statusText: 'Bad Request' })
         expect(capturedError.status).toBe(400)
         httpMock.verify()

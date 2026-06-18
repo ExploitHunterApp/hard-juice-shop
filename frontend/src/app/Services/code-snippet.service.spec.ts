@@ -30,7 +30,7 @@ describe('CodeSnippetService', () => {
         let res: any
         service.get('testChallenge').subscribe((data) => (res = data))
 
-        const req = httpMock.expectOne('http://localhost:3000/snippets/testChallenge')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/testChallenge')
         req.flush({ snippet: 'apiResponse' })
 
         expect(req.request.method).toBe('GET')
@@ -44,7 +44,7 @@ describe('CodeSnippetService', () => {
 
         let capturedError: any
         service.get('missing').subscribe({ next: () => { }, error: (e) => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3000/snippets/missing')
+        const req = httpMock.expectOne('http://localhost:3322/snippets/missing')
         req.flush(null, { status: 404, statusText: 'Not Found' })
         expect(capturedError).toBeTruthy()
         expect(capturedError.status).toBe(404)
