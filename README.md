@@ -81,7 +81,7 @@ This fork is tuned as a configurable ecommerce target for automated agents.
 3. Go into the cloned folder with `cd juice-shop`
 4. Run `npm install` (only has to be done before first start or when you change the source code)
 5. Run `npm start`
-6. Browse to <http://localhost:3322>
+6. Browse to <http://localhost:3000>
 
 ### Packaged Distributions
 
@@ -95,7 +95,7 @@ This fork is tuned as a configurable ecommerce target for automated agents.
    [latest release](https://github.com/juice-shop/juice-shop/releases/latest)
 3. Unpack and `cd` into the unpacked folder
 4. Run `npm start`
-5. Browse to <http://localhost:3322>
+5. Browse to <http://localhost:3000>
 
 > Each packaged distribution includes some binaries for `sqlite3` and
 > `libxmljs2` bound to the OS and node.js version which `npm install` was
@@ -111,9 +111,9 @@ This fork is tuned as a configurable ecommerce target for automated agents.
 "Get your own version badge on microbadger.com")
 
 1. Install [Docker](https://www.docker.com)
-2. Run `docker run --rm -p 127.0.0.1:3322:3322 quay.io/justsml/juice-shop:latest`
-3. Browse to <http://localhost:3322> (on macOS and Windows browse to
-   <http://192.168.99.100:3322> if you are using docker-machine instead of the native docker installation)
+2. Run `docker run --rm -p 127.0.0.1:3000:3000 quay.io/justsml/juice-shop:latest`
+3. Browse to <http://localhost:3000> (on macOS and Windows browse to
+   <http://192.168.99.100:3000> if you are using docker-machine instead of the native docker installation)
 
 ### Runtime Branding Overrides
 

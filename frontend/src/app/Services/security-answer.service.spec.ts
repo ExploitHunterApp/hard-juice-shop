@@ -29,7 +29,7 @@ describe('SecurityAnswerService', () => {
 
         let res: any
         service.save(null).subscribe((data) => (res = data))
-        const req = httpMock.expectOne('http://localhost:3322/api/SecurityAnswers/')
+        const req = httpMock.expectOne('http://localhost:3000/api/SecurityAnswers/')
         req.flush({ data: 'apiResponse' })
         expect(req.request.method).toBe('POST')
         expect(req.request.body).toBeFalsy()
@@ -43,7 +43,7 @@ describe('SecurityAnswerService', () => {
 
         let capturedError: any
         service.save({ a: 1 }).subscribe({ next: () => { throw new Error('expected error') }, error: (e) => { capturedError = e } })
-        const req = httpMock.expectOne('http://localhost:3322/api/SecurityAnswers/')
+        const req = httpMock.expectOne('http://localhost:3000/api/SecurityAnswers/')
         req.error(new ErrorEvent('Request failed'), { status: 400, statusText: 'Bad Request' })
         expect(capturedError.status).toBe(400)
         httpMock.verify()
