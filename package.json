@@ -1,25 +1,16 @@
 {
-  "name": "juice-shop",
+  "name": "yak-hair-and-flair",
   "version": "20.0.0",
   "private": true,
-  "description": "Probably the most modern and sophisticated insecure web application",
+  "description": "Configurable ecommerce storefront for automated agent evaluation",
   "keywords": [
-    "web security",
-    "web application security",
-    "webappsec",
-    "owasp",
-    "pentest",
-    "pentesting",
-    "security",
-    "vulnerable",
-    "vulnerability",
-    "broken",
-    "bodgeit",
-    "ctf",
-    "capture the flag",
-    "awareness"
+    "ecommerce",
+    "storefront",
+    "agent-evaluation",
+    "automation",
+    "demo-shop"
   ],
-  "homepage": "https://owasp-juice.shop",
+  "homepage": "https://yak-shaving.example",
   "bugs": {
     "url": "https://github.com/justsml/juice-shop/issues"
   },
@@ -28,7 +19,7 @@
     "url": "https://github.com/justsml/juice-shop.git"
   },
   "license": "MIT",
-  "author": "Björn Kimminich <bjoern.kimminich@owasp.org> (https://kimminich.de)",
+  "author": "ExploitHunter.app",
   "contributors": [
     "Dan Levy",
     "Björn Kimminich",
@@ -38,7 +29,7 @@
     "MarcRler",
     "agrawalarpit14",
     "Scar26",
-    "JuiceShopBot",
+    "ShopBot",
     "ShubhamPalriwala",
     "CaptainFreak",
     "Supratik Das",
@@ -59,7 +50,7 @@
     "lint:config": "schema validate -s config.schema.yml",
     "lint:fix": "eslint *.ts data lib models routes test/**/*.ts views rsn --fix && cd frontend && pnpm run lint:fix && cd ..",
     "package": "grunt package",
-    "package:ci": "pnpm prune --prod && pnpm dedupe && cd frontend && pnpm prune --prod && cd .. && pnpm run --silent sbom && grunt package",
+    "package:ci": "pnpm prune --prod --ignore-scripts && pnpm dedupe && cd frontend && pnpm prune --prod --ignore-scripts && cd .. && pnpm run --silent sbom && grunt package",
     "serve": "concurrently --kill-others \"tsx app.ts\" \"cd frontend && pnpm run start\"",
     "serve:dev": "concurrently --kill-others \"tsx watch app.ts\" \"cd frontend && pnpm run start\"",
     "start": "node build/app",
@@ -76,7 +67,7 @@
     "rsn:update": "tsx rsn/rsn-update.ts",
     "vagrant": "cd vagrant && vagrant up",
     "sbom": "cyclonedx-npm --omit=dev --output-format=JSON --output-file=bom.json",
-    "preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; if (!ua.includes('pnpm/')) { console.error('Use pnpm via Corepack: corepack enable && corepack prepare pnpm@11.1.1 --activate'); process.exit(1) }\""
+    "preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; const execPath=process.env.npm_execpath||''; if (!ua.includes('pnpm/') && !execPath.includes('pnpm')) { console.error('Use pnpm via Corepack: corepack enable && corepack prepare pnpm@11.1.1 --activate'); process.exit(1) }\""
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
@@ -163,7 +154,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@cyclonedx/cyclonedx-npm": "^2.0.0||^3.0.0||^4.00",
+    "@cyclonedx/cyclonedx-npm": "^5.0.0",
     "@eslint/js": "^9.33.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "^4.3.20",

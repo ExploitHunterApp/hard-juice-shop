@@ -1,15 +1,17 @@
 FROM node:24 AS installer
-COPY . /juice-shop
 WORKDIR /juice-shop
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME/bin:$PATH"
 RUN corepack enable && corepack prepare pnpm@11.1.1 --activate
 RUN pnpm add -g typescript@~5.3.3
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY frontend/package.json frontend/package.json
 RUN pnpm install --ignore-scripts --frozen-lockfile
+COPY . /juice-shop
 RUN pnpm run build:frontend
 RUN pnpm run --silent build:server || true
-RUN pnpm prune --prod
-RUN cd frontend && pnpm prune --prod
+RUN CI=true pnpm prune --prod --ignore-scripts
+RUN cd frontend && CI=true pnpm prune --prod --ignore-scripts
 RUN rm -rf frontend/node_modules
 RUN rm -rf frontend/.angular
 RUN rm -rf frontend/src/assets
@@ -21,23 +23,23 @@ RUN rm ftp/legal.md || true
 RUN rm i18n/*.json || true
 
 # keep version in sync with package.json
-ARG CYCLONEDX_NPM_VERSION='^2.0.0||^3.0.0||^4.0.0'
+ARG CYCLONEDX_NPM_VERSION='^5.0.0'
 RUN pnpm add -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
-RUN pnpm run sbom
+RUN pnpm run sbom || true
 
 FROM gcr.io/distroless/nodejs24-debian13
 ARG BUILD_DATE
 ARG VCS_REF
-LABEL maintainer="Bjoern Kimminich <bjoern.kimminich@owasp.org>" \
-    org.opencontainers.image.title="OWASP Juice Shop" \
-    org.opencontainers.image.description="Probably the most modern and sophisticated insecure web application" \
-    org.opencontainers.image.authors="Bjoern Kimminich <bjoern.kimminich@owasp.org>" \
-    org.opencontainers.image.vendor="Open Worldwide Application Security Project" \
-    org.opencontainers.image.documentation="https://help.owasp-juice.shop" \
+LABEL maintainer="ExploitHunter.app" \
+    org.opencontainers.image.title="Yak Hair & Flair" \
+    org.opencontainers.image.description="Configurable ecommerce storefront for automated agent evaluation" \
+    org.opencontainers.image.authors="ExploitHunter.app" \
+    org.opencontainers.image.vendor="ExploitHunter.app" \
+    org.opencontainers.image.documentation="https://yak-shaving.example/help" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.version="20.0.0" \
-    org.opencontainers.image.url="https://owasp-juice.shop" \
-    org.opencontainers.image.source="https://github.com/juice-shop/juice-shop" \
+    org.opencontainers.image.url="https://yak-shaving.example" \
+    org.opencontainers.image.source="https://github.com/justsml/juice-shop" \
     org.opencontainers.image.revision=$VCS_REF \
     org.opencontainers.image.created=$BUILD_DATE
 WORKDIR /juice-shop

@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "lint:scss": "pnpm exec stylelint \"**/*.scss\"",
     "lint:fix": "ng lint --fix && pnpm exec stylelint \"**/*.scss\" --fix",
-    "preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; if (!ua.includes('pnpm/')) { console.error('Use pnpm via Corepack: corepack enable && corepack prepare pnpm@11.1.1 --activate'); process.exit(1) }\""
+    "preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; const execPath=process.env.npm_execpath||''; if (!ua.includes('pnpm/') && !execPath.includes('pnpm')) { console.error('Use pnpm via Corepack: corepack enable && corepack prepare pnpm@11.1.1 --activate'); process.exit(1) }\""
   },
   "private": true,
   "dependencies": {
