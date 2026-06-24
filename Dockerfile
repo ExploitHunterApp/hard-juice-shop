@@ -7,6 +7,7 @@ RUN pnpm add -g typescript@~5.3.3
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY frontend/package.json frontend/package.json
 RUN pnpm install --ignore-scripts --frozen-lockfile
+RUN pnpm rebuild sqlite3 libxmljs2
 COPY . /juice-shop
 RUN pnpm run build:frontend
 RUN pnpm run --silent build:server || true

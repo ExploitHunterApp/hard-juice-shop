@@ -12,11 +12,6 @@
     <div class="keyboard-hint" aria-hidden="true">{{'KEYBOARD_NAV_HINT' | translate}}</div>
     }
   </div>
-  @if (hint) {
-  <mat-card notification appearance="outlined" class="primary-notification" aria-live="polite">
-    <div class="mdc-card">{{hint}}</div>
-  </mat-card>
-  }
   @if (result === ResultState.Right || selectedLines.length === 0) {
   <span button-label>{{'BTN_SUBMIT' | translate}}</span>
   } @else {
